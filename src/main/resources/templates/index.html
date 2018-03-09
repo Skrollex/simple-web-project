@@ -4,7 +4,25 @@
     <meta charset="UTF-8" />
     <title>Simple Web Project: Home</title>
 </head>
+
 <body>
-<h1 th:text="|Hello, ${name}!|">DEFAULT TITLE</h1>
+<h1 th:text="|Hello, ${name}! Welcome on my blog!|">DEFAULT TITLE</h1>
+
+<p th:text="|Number of posts: ${entries.size()}">NUMBER OF ENTRIES</p>
+
+<div th:each="entry : ${entries}">
+    <h2 th:each="${entry.title}">TITLE</h2>
+    <p>
+        Author: <span th:text="${entry.author}">AUTHOR</span>
+
+        Created <span th:text="${entry.created}">CREATED</span>
+    </p>
+    <p th:text="${entry.content}">CONTENT</p>
+</div>
+<table>
+
+</table>
+
+
 </body>
 </html>
