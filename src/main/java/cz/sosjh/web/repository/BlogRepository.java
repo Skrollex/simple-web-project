@@ -2,9 +2,7 @@ package cz.sosjh.web.repository;
 
 import cz.sosjh.web.model.BlogEntry;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
+import java.util.*;
 
 public final class BlogRepository {
 
@@ -12,13 +10,18 @@ public final class BlogRepository {
         // static repository, do not initialize
     }
 
-    private static List<BlogEntry> entries = new ArrayList<>();
+    private static Map<String, BlogEntry> entries = new HashMap<>();
 
     public static void add(BlogEntry entry) {
-        entries.add(entry);
+
+        entries.put(entry.getId(),entry);
     }
 
     public static List<BlogEntry> getAll() {
-        return Collections.unmodifiableList(entries);
+
+        return Collections.unmodifiableList(new ArrayList(entries.values()));
+    }
+    public static BlogEntry get(String id){
+        return entries.get(id);
     }
 }
